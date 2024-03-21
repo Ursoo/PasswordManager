@@ -2,6 +2,6 @@ from password_generator import PasswordGenerator
 
 password_generator = PasswordGenerator()
 
-password = password_generator.generate()
+password, check_result = password_generator.generate()
 
-print(password)
+print(password, check_result)
