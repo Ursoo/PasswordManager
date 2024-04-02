@@ -1,7 +1,7 @@
 from random import randrange
 
 class PasswordGenerator:
-    def __init__(self, pass_length: int= 9):
+    def __init__(self, pass_length: int= 20):
         self.password_length = pass_length
 
     def generate(self):
