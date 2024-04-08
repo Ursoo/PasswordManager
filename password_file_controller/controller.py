@@ -1,28 +1,33 @@
+from os.path import isfile
+from validation import validate_password
+
+
 class PasswordController():
     def __init__(self, path) -> None:
         self.file_location = path
+        self.file_exists = isfile(self.file_location)
 
     def read_passwords(self):
-        file_exists = self.__check_password_file_exists()
 
-        if file_exists:
+        if self.file_exists:
             with open(self.file_location, 'r') as file:
                 passwords_list = [password.strip() for password in file]
 
                 if passwords_list:
-                    for password in passwords_list:
-                        print(password)
+                    return passwords_list
                 else:
-                    print('No password in file')
+                    return 'No password in file'
         else:
-            print('No file boss')
-    
-    def add_password_to_file(self, password):
-        pass
+            return 'File not found.'
 
-    def __check_password_file_exists(self):
-        try:
-            with open(self.file_location):
-                return True
-        except OSError:
-            return False
+    def add_password_to_file(self, password: str, password_name: str):
+        line = f'{password_name} : {password}'
+
+        with open(self.file_location, 'a') as file:
+            if validate_password(password):
+                file.write(line)
+                file.write('\n')
+            else:
+                return f'{password} does not meet the requirements for a strong password'
+
+        return f'{line} added to password file succesfully!'
