@@ -1,13 +1,24 @@
 from password_generator.password_generator import PasswordGenerator
 from validation import validate_password
+from configuration_controller.controller import UserConfigurationController
+from password_file_controller.controller import PasswordController
 
-password_generator = PasswordGenerator()
+user_controller = UserConfigurationController('resources/configuration/my_config.txt')
 
-check_result = True
+user_controller.read_user_configuration()
 
-while check_result == True:
-    password = password_generator.generate()
+password_controller = PasswordController('resources/configuration/my_passwords.txt')
 
-    check_result = validate_password(password)
+password_controller.read_passwords()
 
-    print(password, check_result)
+password_controller2 = PasswordController('resources/configuration/my_passwords_empty.txt')
+
+password_controller2.read_passwords()
+
+password_controller3 = PasswordController('resources/configuration/asdasy.txt')
+
+password_controller3.read_passwords()
+
+#password_generator = PasswordGenerator()
+
+#password = password_generator.generate()

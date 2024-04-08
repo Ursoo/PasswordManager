@@ -32,7 +32,7 @@ class PasswordGenerator:
         letters = [chr(nr) for nr in range(97,123)]
         capital_letters = [chr(nr) for nr in range(65,91)]
         digits = [str(nr) for nr in range (0,10)]
-        symbols = [chr(nr) for nr in range (32,127) if nr in range (32,48) or nr in range(58,65) or nr in range(91,97) or nr in range(123,127)]
+        symbols = [chr(nr) for nr in range (33,127) if nr in range (33,48) or nr in range(58,65) or nr in range(91,97) or nr in range(123,127)]
 
         password_dict = {1: letters,
                          2: capital_letters,
