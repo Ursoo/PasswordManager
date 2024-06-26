@@ -7,7 +7,7 @@ class PasswordController():
         self.file_location = path
         self.file_exists = isfile(self.file_location)
 
-    def read_passwords(self):
+    def retrieve_password(self):
 
         if self.file_exists:
             with open(self.file_location, 'r') as file:
@@ -18,7 +18,7 @@ class PasswordController():
                 else:
                     return 'No password in file'
         else:
-            return 'File not found.'
+            return f'File {self.file_location} not found.'
 
     def add_password_to_file(self, password: str, password_name: str):
         line = f'{password_name} : {password}'

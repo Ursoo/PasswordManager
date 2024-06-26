@@ -1,13 +1,13 @@
+from os.path import isfile
+
 from password_generator.password_generator import PasswordGenerator
 from validation import validate_password
-from configuration_controller.controller import UserConfigurationController
-from password_file_controller.controller import PasswordController
+from manager_configuration.controller import UserConfigurationController
+from password_vault_controller.controller import PasswordController
 
-#user_controller = UserConfigurationController('resources/configuration/my_config.txt')
+SECURITY_FILE_NAME = '/security.txt'
 
-#user_controller.read_user_configuration()
+user_config = UserConfigurationController(SECURITY_FILE_NAME)
 
-
-#password_generator = PasswordGenerator()
-
-#password = password_generator.generate()
+while (True):
+    user_input = input()
